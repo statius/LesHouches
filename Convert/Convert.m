@@ -83,7 +83,7 @@ interpretStringReal[s_String] := System`Convert`TableDump`ParseTable[
 (*block*)
 
 
-(* ::Subsubsubsection::Closed:: *)
+(* ::Subsubsubsection:: *)
 (*"Header"*)
 
 
@@ -99,7 +99,7 @@ iLesHouchesImportProcessor["Block", "Header"][lines : {__String}] := With[
       StringCases[
         First @ header,
         
-        RegularExpression["^(?i)(block) +([^ #]+) +(q *= *([^ #]+))* *(#(.*))?$"] :> Sequence[
+        RegularExpression["^(?i)(block) +([^ #]+)( +q *= *([^ #]+))* *(#(.*))?$"] :> Sequence[
           "Name" -> "$2",
           "RenormalizationScale" -> interpretStringReal @ "$4",
           "Description" -> StringTrim @ "$6"
